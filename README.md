@@ -2,6 +2,12 @@
 
 This repository provides a Dockerized setup for the Elastic Stack (Elasticsearch, Logstash, and Kibana) for testing and development environments. The setup includes preconfigured services for Elasticsearch, Kibana, and Logstash, along with environment variables for easy customization.
 
+The setup process is divided into two steps:
+
+1.Fresh Setup: First, we deploy ELK containers without persistent volumes to initialize the necessary configuration files.
+
+2.Persistent Volume Setup: After the initial setup, we copy the required files from the containers to the host machine and modify the configuration to use persistent volumes. A dedicated after-setup directory in this repository contains the updated Docker Compose file for this setup.
+
 ## Requirements
 - Docker
 - Docker Compose
@@ -38,12 +44,34 @@ This repository provides a Dockerized setup for the Elastic Stack (Elasticsearch
 ## Configuration
 
 - Logstash is configured to listen for logs on port 5044 with JSON codec and send them to Elasticsearch.
-- Elasticsearch is configured with basic authentication, using the provided credentials in the `.env` file.
+- Elasticsearch is configured with TLS encryption and basic authentication, using the provided credentials in the `.env` file
 - Kibana is configured to connect to Elasticsearch and display the logs.
 
 ## Customization
 
 You can adjust the setup by modifying the `.env` file and the Logstash configuration files (`logstash.conf` and `logstash.yml`). The Docker Compose file is set up for easy scaling and service management.
+
+## Copying Files and Using Persistent Volumes
+
+After starting the ELK stack, the following directories need to be copied from the containers to the host machine for persistent volume usage:
+
+Elasticsearch:
+
+/usr/share/elasticsearch/data
+/usr/share/elasticsearch/config
+Kibana:
+
+/usr/share/kibana/data
+/usr/share/kibana/config
+Logstash:
+
+/usr/share/logstash/data
+/usr/share/logstash/config
+/usr/share/logstash/pipeline
+
+Example Copy Command
+Use the following command to copy necessary files from a running container to the host machine:
+`docker cp logstash:/usr/share/logstash/config <path-to-copy>/`
 
 ## License
 

@@ -3,10 +3,6 @@ volumes:
    driver: local
  esdata01:
    driver: local
- esdata02:
-   driver: local
- esdata03:
-   driver: local
  kibanadata:
    driver: local
  logstashdata01:
