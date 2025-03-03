@@ -1,8 +1,26 @@
 #!/bin/bash
 
-# Prompt user for inputs to populate the .env file
-echo "Welcome to the ELK Stack setup! 🎉"
-echo "------------------------------------------------------------------"
+echo -e "
+********************************************************************************
+\033[38;5;214m _____ _     _  __  ____       _               
+| ____| |   | |/ / / ___|  ___| |_ _   _ _ __  
+|  _| | |   | ' /  \___ \ / _ \ __| | | | '_ \ 
+| |___| |___| . \   ___) |  __/ |_| |_| | |_) |
+|_____|_____|_|\_\ |____/ \___|\__|\__,_| .__/ 
+                                        |_|    \033[0m
+
+\033[1;32m Auto ELK Setup 🛠️ \033[0m
+
+********************************************************************************
+\033[1;33mWelcome to the Auto ELK Stack setup! 🎉\033[0m
+
+For more info, visit my GitHub and LinkedIn profiles:
+\033[1;36mGitHub: https://github.com/yusufkaya01\033[0m
+\033[1;36mLinkedIn: https://www.linkedin.com/in/yusufkayatr96\033[0m
+
+------------------------------------------------------------------
+"
+
 echo "Please provide the following values for the .env file:"
 
 # Get values from user and update .env
