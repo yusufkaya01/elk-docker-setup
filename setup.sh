@@ -34,7 +34,7 @@ echo -e "
                                         |_|    \033[0m
 
 \033[1;30;101mAuto ELK Stack setup by Yusuf Kaya\033[0m
-\033[1;30;105mVersion: 1.0.0\033[0m
+\033[1;30;105mVersion: 1.0.1\033[0m
 
 For more info, visit my GitHub, LinkedIn and Medium profiles:
 \033[1;36mGitHub: https://github.com/yusufkaya01\033[0m
