@@ -4,9 +4,9 @@ This repository provides a Dockerized setup for the Elastic Stack (Elasticsearch
 
 The setup process is divided into two steps:
 
-1.Fresh Setup: First, we deploy ELK containers without persistent volumes to initialize the necessary configuration files.
+    1.Fresh Setup: First, we deploy ELK containers without persistent volumes to initialize the necessary configuration files.
 
-2.Persistent Volume Setup: After the initial setup, we copy the required files from the containers to the host machine and modify the configuration to use persistent volumes. A dedicated after-setup directory in this repository contains the updated Docker Compose file for this setup.
+    2.Persistent Volume Setup: After the initial setup, we copy the required files from the containers to the host machine and modify the configuration to use persistent volumes. A dedicated after-setup directory in this repository contains the updated Docker Compose file for this setup.
 
 ## Requirements
 - Docker
@@ -59,15 +59,21 @@ Elasticsearch:
 
 /usr/share/elasticsearch/data
 /usr/share/elasticsearch/config
+
 Kibana:
 
+```
 /usr/share/kibana/data
 /usr/share/kibana/config
+```
+
 Logstash:
 
+```
 /usr/share/logstash/data
 /usr/share/logstash/config
 /usr/share/logstash/pipeline
+```
 
 Example Copy Command
 Use the following command to copy necessary files from a running container to the host machine:
