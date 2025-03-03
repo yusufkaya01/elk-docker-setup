@@ -144,7 +144,7 @@ echo "Copying Logstash data, config, and pipeline... 📦"
 sleep 1
 docker cp logstash:/usr/share/logstash/data ./logstash-volume/
 docker cp logstash:/usr/share/logstash/config ./logstash-volume/
-docker cp logstash:/usr/share/logstash/pipeline ./logstash-volume/
+docker cp logstash:/usr/share/logstash/certs ./logstash-volume/
 
 echo "Files copied to volumes successfully! 📂✅"
 echo "************************************************************************************************"
