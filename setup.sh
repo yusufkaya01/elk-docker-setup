@@ -53,4 +53,40 @@ echo "Files copied to volumes successfully!"
 echo "Setting permissions for the copied files..."
 chmod 775 -R ./elasticsearch-volume ./kibana-volume ./logstash-volume
 
-echo "Setup complete! ELK stack is ready with persistent volumes."
+# Stop and remove the containers, networks, and volumes
+echo "Stopping and removing containers, networks, and volumes..."
+docker-compose down -v
+
+# Replace the docker-compose.yml file with the one from ./after-setup
+echo "Replacing docker-compose.yml with the one from ./after-setup..."
+cp ./after-setup/docker-compose.yml ./docker-compose.yml
+
+# Restart the containers with the updated docker-compose.yml
+echo "Starting the containers with the updated docker-compose.yml..."
+docker-compose up -d
+
+# Wait for the containers to be healthy again
+echo "Waiting for containers to be healthy after restart..."
+
+# Check container health status again
+while true; do
+    # Check the health of each container
+    elasticsearch_health=$(docker inspect --format '{{.State.Health.Status}}' elasticsearch)
+    kibana_health=$(docker inspect --format '{{.State.Health.Status}}' kibana)
+    logstash_health=$(docker inspect --format '{{.State.Health.Status}}' logstash)
+
+    # If all containers are healthy, break the loop
+    if [[ "$elasticsearch_health" == "healthy" && "$kibana_health" == "healthy" && "$logstash_health" == "healthy" ]]; then
+        echo "All containers are healthy!"
+        break
+    else
+        # Wait for 60 seconds before checking again
+        echo "Waiting for containers to be healthy..."
+        sleep 60
+    fi
+done
+
+# Final message
+echo "Process is finished! 🎉"
+echo "I thank you for using my repo. Check out my GitHub repo at: https://github.com/yusufkaya01"
+echo "Yusuf Kaya"
