@@ -27,19 +27,33 @@ After the initial setup, we copy the required files from the containers to the h
 
 2. Modify the `.env` file with your desired configuration values. Ensure passwords, memory limits, and ports are set as per your needs.
 
-3. Start the ELK stack using Docker Compose:
+3. **Add an Encryption Key**:  
+   To ensure security, you'll need to add an encryption key to the `.env` file. To generate a secure encryption key, use the following command:
+
+    ```bash
+    openssl rand -base64 32
+    ```
+
+   This will generate a random 32-byte encryption key, which you can then paste into the `.env` file as shown below:
+
+    ```bash
+    # SAMPLE Predefined Key only to be used in POC environments
+    ENCRYPTION_KEY=<your-generated-encryption-key>
+    ```
+
+4. Start the ELK stack using Docker Compose:
 
     ```bash
     docker-compose up -d
     ```
 
-4. Access Kibana via the following URL in your browser:
+5. Access Kibana via the following URL in your browser:
 
     ```
     http://localhost:5601
     ```
 
-5. Elasticsearch can be accessed at:
+6. Elasticsearch can be accessed at:
 
     ```
     http://localhost:9200
